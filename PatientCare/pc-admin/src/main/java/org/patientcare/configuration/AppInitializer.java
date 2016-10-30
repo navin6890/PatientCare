@@ -2,29 +2,25 @@ package org.patientcare.configuration;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration.Dynamic;//we need servlet-api above 2.5
+import javax.servlet.ServletRegistration;
 
-//all org.springframework.web is available in spring-web maven dependancy except those which is highlighted
 import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;//this is in spring-webmvc package
+import org.springframework.web.servlet.DispatcherServlet;//spring-webmvc
 
-public class AppInitializer implements WebApplicationInitializer
-{
-	private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
-							
-	public void onStartup(ServletContext servletContext) throws ServletException 
-	{
-		//spring-web   
-		AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-		ctx.register(AppConfig.class);
-		servletContext.addListener(new ContextLoaderListener(ctx));
-		ctx.setServletContext(servletContext);
-
-		Dynamic servlet = servletContext.addServlet(DISPATCHER_SERVLET_NAME, new DispatcherServlet(ctx));
-		servlet.setLoadOnStartup(1);
-		servlet.addMapping("/");
-	}
-
+public class AppInitializer implements WebApplicationInitializer {
+ 
+    public void onStartup(ServletContext container) throws ServletException {
+ 
+    	System.out.println("yaha tak aaya");
+        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
+        ctx.register(AppConfig.class);
+        ctx.setServletContext(container);
+ 
+        ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(ctx));
+ 
+        servlet.setLoadOnStartup(1);
+        servlet.addMapping("/");
+    }
+ 
 }
