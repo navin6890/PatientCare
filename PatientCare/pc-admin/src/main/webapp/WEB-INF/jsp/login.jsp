@@ -5,56 +5,40 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
-<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Admin Login</title>
-<style>
-.lg-btn 
-{
-	width: 20%;
-}
-
-.inputControl {
-	width: 50%;
-}
-</style>
 </head>
 <body>
-	
-			<form:form method="POST" action="login"
-				modelAttribute="AdminUser" autocomplete="off">
-				<table width="100%" border="0">
-					<tr>
-						<td><div class="form-control">
-								<%-- <form:errors path="name"  class="label error-label"></form:errors> --%>
-								<label>
-									<p>
-										User Name<small class="required"></small>
-									</p> <form:input path="emailId" class="inputControl"
-										placeholder="Please enter your email" required="autofocus"
-										maxlength="50" id="emailId" />
-								</label>
-							</div></td>
-					</tr>
-					<tr>
-						<td><div class="form-control">
-								<%-- <form:errors path="subject"  class="label error-label"></form:errors> --%>
-								<label>
-									<p>
-										Password<small class="required"></small>
-									</p> <form:password path="password" class="inputControl"
-										placeholder="Password" required="autofocus" maxlength="15"
-										id="password" />
-								</label>
-							</div></td>
-					</tr>
-					<tr>
-						<td colspan="2"><input type="submit" value="Submit"
-							class="btn lg-btn" onclick="remeberMe();" /></td>
-					</tr>
-				</table>
-			</form:form>
-		
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+	<form:form method="POST" action="signIn"
+		modelAttribute="admin" autocomplete="off">
+		<table width="100%" border="0">
+			<tr>
+				<td><div class="form-control">
+						<label>
+							<p>
+								User Name<small class="required"></small>
+							</p> <form:input path="emailId" class="inputControl"
+								placeholder="Please enter your email" required="autofocus"
+								maxlength="50" id="emailId" />
+						</label>
+					</div></td>
+			</tr>
+			<tr>
+				<td><div class="form-control">
+						<label>
+							<p>
+								Password<small class="required"></small>
+							</p> <form:password path="password" placeholder="Password"
+								required="autofocus" maxlength="15" id="password" />
+						</label>
+					</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+	</form:form>
 	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
